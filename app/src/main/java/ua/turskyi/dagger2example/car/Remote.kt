@@ -1,4 +1,4 @@
-package ua.turskyi.dagger2example
+package ua.turskyi.dagger2example.car
 
 import android.util.Log
 import javax.inject.Inject
