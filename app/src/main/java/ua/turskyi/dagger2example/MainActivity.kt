@@ -2,17 +2,16 @@ package ua.turskyi.dagger2example
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(R.layout.activity_main) {
-
-    private var car: Car? = null
-
+class MainActivity : AppCompatActivity() {
+    @Inject
+    lateinit var car: Car
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        setContentView(R.layout.activity_main)
         val component: CarComponent = DaggerCarComponent.create()
-
-        car = component.getCar()
-        car?.drive()
+        component.inject(this)
+        car.drive()
     }
 }
