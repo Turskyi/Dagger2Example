@@ -5,7 +5,9 @@ import dagger.Component
 import ua.turskyi.dagger2example.MainActivity
 import ua.turskyi.dagger2example.car.Car
 import javax.inject.Named
+import javax.inject.Singleton
 
+@Singleton
 @Component(modules = [WheelsModule::class, PetrolEngineModule::class])
 interface CarComponent {
     val car: Car
