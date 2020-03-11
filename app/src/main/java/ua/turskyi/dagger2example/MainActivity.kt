@@ -3,8 +3,7 @@ package ua.turskyi.dagger2example
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import ua.turskyi.dagger2example.car.Car
-import ua.turskyi.dagger2example.dagger.ActivityComponent
-import ua.turskyi.dagger2example.dagger.DaggerActivityComponent
+import ua.turskyi.dagger2example.dagger.DieselEngineModule
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -15,12 +14,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val component: ActivityComponent = DaggerActivityComponent.builder()
-            .horsePower(120)
-            .engineCapacity(1400)
-            .appComponent((application as ExampleApp).appComponent)
-            .build()
-        component.inject(this)
+        val component = (application as ExampleApp).appComponent
+            ?.getActivityComponent(DieselEngineModule(120))
+        component?.inject(this)
         car1.drive()
         car2.drive()
     }
