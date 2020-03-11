@@ -3,21 +3,22 @@ package ua.turskyi.dagger2example
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import ua.turskyi.dagger2example.car.Car
-import ua.turskyi.dagger2example.dagger.DaggerCarComponent
+import ua.turskyi.dagger2example.dagger.ActivityComponent
+import ua.turskyi.dagger2example.dagger.DaggerActivityComponent
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
     @Inject
-    lateinit var car1: Car
+  lateinit  var car1: Car
     @Inject
-    lateinit var car2: Car
-
+   lateinit var car2: Car
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val component = DaggerCarComponent.builder()
-            .horsePower(150)
+        val component: ActivityComponent = DaggerActivityComponent.builder()
+            .horsePower(120)
             .engineCapacity(1400)
+            .appComponent((application as ExampleApp).appComponent)
             .build()
         component.inject(this)
         car1.drive()

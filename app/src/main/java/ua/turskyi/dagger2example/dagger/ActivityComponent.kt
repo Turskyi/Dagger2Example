@@ -5,11 +5,13 @@ import dagger.Component
 import ua.turskyi.dagger2example.MainActivity
 import ua.turskyi.dagger2example.car.Car
 import javax.inject.Named
-import javax.inject.Singleton
 
-@Singleton
-@Component(modules = [WheelsModule::class, PetrolEngineModule::class])
-interface CarComponent {
+@PerActivity
+@Component(
+    dependencies = [AppComponent::class],
+    modules = [WheelsModule::class, PetrolEngineModule::class]
+)
+interface ActivityComponent {
     val car: Car
 
     fun inject(mainActivity: MainActivity)
@@ -21,6 +23,7 @@ interface CarComponent {
 
         @BindsInstance
         fun engineCapacity(@Named("engine capacity") engineCapacity: Int): Builder
-        fun build(): CarComponent
+        fun appComponent(component: AppComponent?): Builder
+        fun build(): ActivityComponent
     }
 }

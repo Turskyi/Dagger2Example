@@ -1,8 +1,10 @@
 package ua.turskyi.dagger2example.car
 
 import android.util.Log
+import ua.turskyi.dagger2example.dagger.PerActivity
 import javax.inject.Inject
 
+@PerActivity
 class Car @Inject constructor(
     private val driver: Driver,
     private val engine: Engine,
