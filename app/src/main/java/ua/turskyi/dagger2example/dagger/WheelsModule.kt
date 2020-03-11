@@ -7,7 +7,7 @@ import ua.turskyi.dagger2example.car.Tires
 import ua.turskyi.dagger2example.car.Wheels
 
 @Module
-class WheelsModule {
+object WheelsModule {
     @Provides
     fun provideRims(): Rims {
         return Rims()
@@ -21,7 +21,7 @@ class WheelsModule {
     }
 
     @Provides
-    fun provideWheels(rims: Rims, tires: Tires): Wheels {
-        return Wheels(rims, tires)
+    fun provideWheels(rims: Rims?, tires: Tires?): Wheels {
+        return Wheels(rims!!, tires!!)
     }
 }

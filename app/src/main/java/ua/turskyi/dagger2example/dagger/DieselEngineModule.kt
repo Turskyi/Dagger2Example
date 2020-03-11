@@ -1,12 +1,15 @@
 package ua.turskyi.dagger2example.dagger
 
-import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import ua.turskyi.dagger2example.car.DieselEngine
 import ua.turskyi.dagger2example.car.Engine
 
+
 @Module
-abstract class DieselEngineModule {
-    @Binds
-    abstract fun bindEngine(engine: DieselEngine?): Engine?
+class DieselEngineModule(private val horsePower: Int) {
+    @Provides
+    fun provideEngine(): Engine {
+        return DieselEngine(horsePower)
+    }
 }
