@@ -11,7 +11,7 @@ class Car @Inject constructor(
     private val wheels: Wheels
 ) {
     companion object {
-        private const val TAG = "Car"
+        private const val TAG = "Car==>"
     }
 
     @Inject

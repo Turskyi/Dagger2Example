@@ -5,11 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import ua.turskyi.dagger2example.car.Car
 import javax.inject.Inject
 
+/**
+ * By using Log.d with tag Car==> can be seen how the dagger works
+ */
 class MainActivity : AppCompatActivity() {
     @Inject
-  lateinit  var car1: Car
+    lateinit var car1: Car
     @Inject
-   lateinit var car2: Car
+    lateinit var car2: Car
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
